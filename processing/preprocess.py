@@ -1,4 +1,5 @@
-"""Preprocess scraped reviews: dedupe, drop missing, normalize date, ensure columns."""
+"""Preprocess scraped reviews: dedupe, drop missing, normalize date,
+ensure columns."""
 
 import argparse
 import pandas as pd
@@ -35,16 +36,25 @@ def preprocess(in_csv: str, out_csv: str):
 
     after = len(df)
     logger.info(
-        "Preprocess: before=%d after=%d dropped=%d", before, after, before - after
+        "Preprocess: before=%d after=%d dropped=%d",
+        before,
+        after,
+        before - after,
     )
 
     # Rename and reorder columns
     out_df = df.rename(columns={"review": "review_text"})
-    out_df = out_df[["review_id", "review_text", "rating", "date", "bank", "source"]]
+    out_df = out_df[
+        ["review_id", "review_text", "rating", "date", "bank", "source"]
+    ]
 
     # Save cleaned CSV
     out_df.to_csv(out_csv, index=False, encoding="utf-8")
-    logger.info("Saved clean CSV to %s (%d rows)", out_csv, len(out_df))
+    logger.info(
+        "Saved clean CSV to %s (%d rows)",
+        out_csv,
+        len(out_df),
+    )
 
     return out_df
 
