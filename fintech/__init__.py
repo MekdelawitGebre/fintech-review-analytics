@@ -1,1 +1,3 @@
-'fintech'
+# fintech/__init__.py
+
+

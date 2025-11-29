@@ -1,7 +1,7 @@
 """Preprocess scraped reviews: dedupe, drop missing, normalize date, ensure columns."""
 import pandas as pd
 from fintech.config import DATA_DIR
-from helpers import logger, ensure_cols
+from helpers import logger
 import argparse
 
 
