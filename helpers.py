@@ -13,10 +13,11 @@ def save_json(path: str, data):
     with open(path, "w", encoding="utf-8") as f:
         json.dump(data, f, indent=2)
 
+
 logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s - %(levelname)s - %(message)s"
 )
 
-logger = logging.getLogger(__name__)
 
+logger = logging.getLogger(__name__)

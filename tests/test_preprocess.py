@@ -20,14 +20,14 @@ def test_preprocess_creates_csv(tmp_path):
     # Check the output file exists
     assert output_file.exists()
 
-    # Check that it has the expected columns (E501 Fix)
+    # Check that it has the expected columns
     expected_columns = {
         "review_id",
         "review_text",
         "rating",
         "date",
         "bank",
-        "source"
+        "source",
     }
     assert set(df.columns) == expected_columns
 
@@ -36,4 +36,3 @@ def test_preprocess_creates_csv(tmp_path):
 
     # Optional: Check that dates are correctly formatted
     assert all(df["date"] == ["2025-11-29", "2025-11-29"])
-    
