@@ -1,5 +1,5 @@
 """Preprocess scraped reviews: dedupe, drop missing, normalize date,
-ensure columns."""
+ensure columns. """
 
 import argparse
 import pandas as pd
