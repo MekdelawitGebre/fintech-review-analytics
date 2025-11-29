@@ -30,3 +30,4 @@ def test_preprocess_creates_csv(tmp_path):
 
     # Optional: Check that dates are correctly formatted
     assert all(df["date"] == ["2025-11-29", "2025-11-29"])
+    
