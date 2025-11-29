@@ -1,8 +1,6 @@
-# tests/test_preprocess.py
-import pandas as pd
-from processing.preprocess import preprocess
-import pytest
 from pathlib import Path
+from processing.preprocess import preprocess
+
 
 def test_preprocess_creates_csv(tmp_path):
     # Use tmp_path as the temporary DATA_DIR
@@ -22,12 +20,19 @@ def test_preprocess_creates_csv(tmp_path):
     # Check the output file exists
     assert output_file.exists()
 
-    # Check that it has the expected columns
-    assert set(df.columns) == {"review_id", "review_text", "rating", "date", "bank", "source"}
+    # Check that it has the expected columns (E501 Fix)
+    expected_columns = {
+        "review_id",
+        "review_text",
+        "rating",
+        "date",
+        "bank",
+        "source"
+    }
+    assert set(df.columns) == expected_columns
 
     # Check row count
     assert len(df) == 2
 
     # Optional: Check that dates are correctly formatted
     assert all(df["date"] == ["2025-11-29", "2025-11-29"])
-    
