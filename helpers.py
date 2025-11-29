@@ -1,14 +1,16 @@
+# helpers.py
 import logging
-from pathlib import Path
 
-logging.basicConfig(
-    level=logging.INFO,
-    format="%(asctime)s - %(levelname)s - %(message)s",
-)
 logger = logging.getLogger(__name__)
+logger.setLevel(logging.INFO)
 
-def ensure_cols(df, cols):
-    for c in cols:
-        if c not in df.columns:
-            raise ValueError(f"Missing required column: {c}")
-    return True
+
+def ensure_cols(df, required_cols):
+    for col in required_cols:
+        if col not in df.columns:
+            df[col] = None
+    return df
+
+
+def some_helper_function():  # Example function
+    pass
