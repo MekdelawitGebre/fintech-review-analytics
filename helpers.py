@@ -1,23 +1,16 @@
-import json
+# helpers.py
 import logging
 
-
-def load_json(path: str):
-    """Load JSON file safely."""
-    with open(path, "r", encoding="utf-8") as f:
-        return json.load(f)
-
-
-def save_json(path: str, data):
-    """Save dictionary as JSON."""
-    with open(path, "w", encoding="utf-8") as f:
-        json.dump(data, f, indent=2)
-
-
-logging.basicConfig(
-    level=logging.INFO,
-    format="%(asctime)s - %(levelname)s - %(message)s"
-)
-
-
 logger = logging.getLogger(__name__)
+logger.setLevel(logging.INFO)
+
+
+def ensure_cols(df, required_cols):
+    for col in required_cols:
+        if col not in df.columns:
+            df[col] = None
+    return df
+
+
+def some_helper_function():  # Example function
+    pass
