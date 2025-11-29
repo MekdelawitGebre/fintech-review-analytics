@@ -1,14 +1,13 @@
-import logging
-from pathlib import Path
+import json
 
-logging.basicConfig(
-    level=logging.INFO,
-    format="%(asctime)s - %(levelname)s - %(message)s",
-)
-logger = logging.getLogger(__name__)
 
-def ensure_cols(df, cols):
-    for c in cols:
-        if c not in df.columns:
-            raise ValueError(f"Missing required column: {c}")
-    return True
+def load_json(path: str):
+    """Load JSON file safely."""
+    with open(path, "r", encoding="utf-8") as f:
+        return json.load(f)
+
+
+def save_json(path: str, data):
+    """Save dictionary as JSON."""
+    with open(path, "w", encoding="utf-8") as f:
+        json.dump(data, f, indent=2)
